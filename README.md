@@ -72,7 +72,7 @@ food-ordering-system/
 ├── package-lock.json
 ├── .gitignore
 └── README.md
-
+```
 📄 Main Files
 server.js – Backend server and application logic.
 index.html – Main home page.
