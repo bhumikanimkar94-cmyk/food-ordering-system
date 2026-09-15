@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="login.html">Login</a>
+    <a href="register.html">Register</a>
+</div>
+
+<div class="form-box">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username"><br><br>
+    <input type="password" id="password" placeholder="Password"><br><br>
+    <button onclick="login()">Login</button>
+    <p id="msg"></p>
+    <p>No account? <a href="register.html">Register here</a></p>
+</div>
+
+<script>
+// Redirect already logged-in users to index
+if(localStorage.getItem("loggedIn") === "true"){
+    window.location.href = "index.html";
+}
+
+function login(){
+
+let u = document.getElementById("username").value.trim();
+let p = document.getElementById("password").value.trim();
+
+let users = JSON.parse(localStorage.getItem("users")) || [];
+
+// 🔍 find user
+let found = users.find(user => user.username === u && user.password === p);
+
+if(found){
+
+localStorage.setItem("loggedIn", "true");
+localStorage.setItem("username", u); // current user
+
+alert("Login Successful!");
+window.location.href = "index.html";
+
+}else{
+document.getElementById("msg").innerText = "Wrong username or password!";
+}
+
+}
+</script>
+
+</body>
+</html>

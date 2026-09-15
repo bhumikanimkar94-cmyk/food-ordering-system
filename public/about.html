@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>About</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="navbar">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="login.html">Login</a>
+<a href="register.html">Register</a>
+</div>
+
+</div>
+<div class="about-box">
+
+<h1>About Our Food Ordering System</h1>
+
+<p>
+This project is a Food Ordering System developed using HTML, 
+CSS, JavaScript and Node.js.
+It allows users to register, login, browse food items, 
+add them to cart and place orders easily.
+</p>
+
+<p>
+The main objective of this project is to provide a simple
+and user-friendly interface
+for online food ordering. It also demonstrates the use of
+frontend and backend technologies.
+</p>
+
+<p>
+Features include user authentication, cart management, 
+order placement and responsive design.
+</p>
+
+</div>
+<script>
+
+if(localStorage.getItem("loggedIn") !== "true"){
+window.location.href="login.html";
+}
+
+</script>
+</body>
+</html>

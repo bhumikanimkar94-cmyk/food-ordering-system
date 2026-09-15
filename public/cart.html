@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cart</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="navbar">
+<div class="nav-left">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="login.html">Login</a>
+<a href="register.html">Register</a>
+</div>
+
+</div>
+</div>
+
+<h1>Your Cart 🛒</h1>
+
+<!-- ✅ IMPORTANT CHANGE -->
+<div id="cart" class="food-container"></div>
+
+<h3>Total: ₹<span id="total">0</span></h3>
+
+<button onclick="openForm()">Place Order</button>
+
+<!-- POPUP FORM -->
+<div id="orderForm" class="modal">
+<div class="modal-content">
+
+<h2>Delivery Details</h2>
+
+<input type="text" id="address" placeholder="Enter address"><br><br>
+<input type="text" id="phone" placeholder="Enter phone"><br><br>
+
+<p><b>Payment: Cash on Delivery</b></p>
+
+<button onclick="submitOrder()">Confirm</button>
+<button onclick="closeForm()">Cancel</button>
+
+</div>
+</div>
+
+<script>
+
+// 🛒 LOAD DATA
+let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+let total = parseInt(localStorage.getItem("total")) || 0;
+
+let cart = document.getElementById("cart");
+
+// 🟢 DISPLAY AS CARDS (LIKE HOME PAGE)
+if(cartItems.length === 0){
+cart.innerHTML = "<h3>Cart is empty 😢</h3>";
+}else{
+
+cartItems.forEach((item, index) => {
+
+let div = document.createElement("div");
+div.className = "food";   // ⭐ SAME DESIGN
+
+div.innerHTML = `
+<img src="${item.image}">
+<h3>${item.name}</h3>
+<p>₹${item.price}</p>
+<button onclick="removeItem(${index})">Remove</button>
+`;
+
+cart.appendChild(div);
+
+});
+
+}
+
+// 💰 TOTAL
+document.getElementById("total").innerText = total;
+
+// ❌ REMOVE ITEM
+function removeItem(index){
+total -= cartItems[index].price;
+cartItems.splice(index,1);
+
+localStorage.setItem("cartItems", JSON.stringify(cartItems));
+localStorage.setItem("total", total);
+
+location.reload();
+}
+
+// 📦 OPEN FORM
+function openForm(){
+if(total === 0){
+alert("Cart is empty!");
+return;
+}
+document.getElementById("orderForm").style.display = "flex";
+}
+
+// ❌ CLOSE FORM
+function closeForm(){
+document.getElementById("orderForm").style.display = "none";
+}
+
+// 🚀 SUBMIT ORDER
+async function submitOrder(){
+
+let username = localStorage.getItem("username");
+let address = document.getElementById("address").value;
+let phone = document.getElementById("phone").value;
+let payment = "COD";
+
+if(!address || !phone){
+alert("Please fill all details");
+return;
+}
+
+try{
+
+await fetch("http://localhost:3000/order",{
+method:"POST",
+headers:{ "Content-Type":"application/json" },
+body: JSON.stringify({
+username,
+items: cartItems,
+total,
+address,
+phone,
+payment
+})
+});
+
+alert("✅ Order Placed Successfully!");
+
+// clear cart
+localStorage.removeItem("cartItems");
+localStorage.removeItem("total");
+
+window.location.href = "index.html";
+
+}catch(err){
+alert("❌ Error placing order");
+console.log(err);
+}
+
+}
+
+</script>
+
+</body>
+</html>

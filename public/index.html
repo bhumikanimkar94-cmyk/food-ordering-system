@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Food Ordering System</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="navbar">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="login.html">Login</a>
+<a href="register.html">Register</a>
+</div>
+
+<!-- 🛒 FLOATING BUTTONS -->
+<div class="floating-buttons">
+<button onclick="goToCart()">🛒 <span id="count">0</span></button>
+<button onclick="goToProfile()">👤</button>
+</div>
+
+<h1>The Hungry Hub</h1>
+
+<!-- 🔍 SEARCH -->
+<div class="search-box">
+<input type="text" id="search" placeholder="Search food..." onkeyup="searchFood()">
+</div>
+
+<p id="noResult" style="display:none; font-size:20px;">
+Oops!This item isn't on the menu right now 😞
+</p>
+
+<!-- 🍝 ITALIAN -->
+<h2>🍝 Italian</h2>
+<div class="food-container">
+
+<div class="food">
+<img src="images/pizza.jpg">
+<h3>Pizza</h3>
+<p>₹250</p>
+<button onclick="addToCart('Pizza',250,'images/pizza.jpg')">Add</button>
+</div>
+
+<div class="food">
+<img src="images/pasta.jpg">
+<h3>Pasta</h3>
+<p>₹180</p>
+<button onclick="addToCart('Pasta',180,'images/pasta.jpg')">Add</button>
+</div>
+
+<div class="food">
+<img src="images/sandwich.jpg">
+<h3>Sandwich</h3>
+<p>₹90</p>
+<button onclick="addToCart('Sandwich',90,'images/sandwich.jpg')">Add</button>
+</div>
+
+<div class="food">
+<img src="images/lasagna.jpg">
+<h3>Lasagna</h3>
+<p>₹220</p>
+<button onclick="addToCart('Lasagna',220,'images/lasagna.jpg')">Add</button>
+</div>
+
+</div>
+
+<!-- 🍰 SWEETS -->
+<h2>🍰 Sweets</h2>
+<div class="food-container">
+
+<div class="food">
+<img src="images/rasmalai.jpg">
+<h3>Rasmalai</h3>
+<p>₹120</p>
+<button onclick="addToCart('Rasmalai',120,'images/rasmalai.jpg')">Add</button>
+</div>
+
+<div class="food">
+<img src="images/gulabjamun.jpg">
+<h3>Gulab Jamun</h3>
+<p>₹80</p>
+<button onclick="addToCart('Gulab Jamun',80,'images/gulabjamun.jpg')">Add</button>
+</div>
+
+<div class="food">
+<img src="images/icecream.jpg">
+<h3>Ice Cream</h3>
+<p>₹100</p>
+<button onclick="addToCart('Ice Cream',100,'images/icecream.jpg')">Add</button>
+</div>
+
+</div>
+
+<!-- 🍹 BEVERAGES -->
+<h2>🍹 Beverages</h2>
+<div class="food-container">
+
+<div class="food">
+<img src="images/juice.jpg">
+<h3>Mango Juice</h3>
+<p>₹90</p>
+<button onclick="addToCart('Mango Juice',90,'images/juice.jpg')">Add</button>
+</div>
+
+<div class="food">
+<img src="images/coke.jpg">
+<h3>Coke</h3>
+<p>₹50</p>
+<button onclick="addToCart('Coke',50,'images/coke.jpg')">Add</button>
+</div>
+
+<div class="food">
+<img src="images/mocktail.jpg">
+<h3>Mocktail</h3>
+<p>₹120</p>
+<button onclick="addToCart('Mocktail',120,'images/mocktail.jpg')">Add</button>
+</div>
+
+</div>
+
+<!-- 🍜 CHINESE -->
+<h2>🍜 Chinese</h2>
+<div class="food-container">
+
+<div class="food">
+<img src="images/noodles.jpg">
+<h3>Noodles</h3>
+<p>₹100</p>
+<button onclick="addToCart('Noodles',100,'images/noodles.jpg')">Add</button>
+</div>
+
+<div class="food">
+<img src="images/munchurian.jpg">
+<h3>Manchurian</h3>
+<p>₹90</p>
+<button onclick="addToCart('Manchurian',90,'images/munchurian.jpg')">Add</button>
+</div>
+
+<div class="food">
+<img src="images/burger.jpg">
+<h3>Burger</h3>
+<p>₹120</p>
+<button onclick="addToCart('Burger',120,'images/burger.jpg')">Add</button>
+</div>
+
+</div>
+
+<!-- 🍛 DESI -->
+<h2>🍛 Desi Khana</h2>
+<div class="food-container">
+
+<div class="food">
+<img src="images/roti.jpg">
+<h3>Roti Sabji</h3>
+<p>₹120</p>
+<button onclick="addToCart('Roti Sabji',120,'images/roti.jpg')">Add</button>
+</div>
+
+<div class="food">
+<img src="images/biryani.jpg">
+<h3>Biryani</h3>
+<p>₹200</p>
+<button onclick="addToCart('Biryani',200,'images/biryani.jpg')">Add</button>
+</div>
+
+<div class="food">
+<img src="images/paneer.jpg">
+<h3>Paneer Butter Masala</h3>
+<p>₹180</p>
+<button onclick="addToCart('Paneer Butter Masala',180,'images/paneer.jpg')">Add</button>
+</div>
+
+</div>
+
+<script>
+
+// 🔍 SEARCH 
+function searchFood() {
+
+let input = document.getElementById("search").value.toLowerCase();
+let containers = document.getElementsByClassName("food-container");
+let foundAny = false;
+
+for (let i = 0; i < containers.length; i++) {
+
+let foods = containers[i].getElementsByClassName("food");
+let heading = containers[i].previousElementSibling; // h2
+let headingText = heading.innerText.toLowerCase();
+
+let showSection = false;
+
+// ⭐ CASE 1: Heading match (Italian, Sweets, etc.)
+    if (headingText.includes(input)) {
+
+        containers[i].style.display = "block";
+        heading.style.display = "block";
+
+        for (let j = 0; j < foods.length; j++) {
+            foods[j].style.display = "inline-block";
+         }
+
+        foundAny = true;
+        continue; // next section
+        }
+
+// ⭐ CASE 2: Item search
+    for (let j = 0; j < foods.length; j++) {
+
+        let item = foods[j]
+        .getElementsByTagName("h3")[0]
+        .innerText.toLowerCase();
+
+        if (item.includes(input)) {
+            foods[j].style.display = "inline-block";
+            showSection = true;
+            foundAny = true;
+        } else {
+            foods[j].style.display = "none";
+         }
+     }
+
+ // section show/hide
+        if (showSection) {
+            containers[i].style.display = "block";
+            heading.style.display = "block";
+        } else {
+            containers[i].style.display = "none";
+            heading.style.display = "none";
+        }
+    }
+
+    // ⭐ NO RESULT MESSAGE
+    let msg = document.getElementById("noResult");
+
+    if (!foundAny && input !== "") {
+        msg.style.display = "block";
+    } else {
+        msg.style.display = "none";
+    }
+
+    // ⭐ EMPTY SEARCH → show all
+    if (input === "") {
+        for (let i = 0; i < containers.length; i++) {
+
+            containers[i].style.display = "block";
+            containers[i].previousElementSibling.style.display = "block";
+
+            let foods = containers[i].getElementsByClassName("food");
+
+            for (let j = 0; j < foods.length; j++) {
+                foods[j].style.display = "inline-block";
+            }
+        }
+    }
+}
+// 🛒 CART
+let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+let total = parseInt(localStorage.getItem("total")) || 0;
+
+function addToCart(item, price, image){
+
+cartItems.push({ name: item, price: price, image: image });
+total += price;
+
+localStorage.setItem("cartItems", JSON.stringify(cartItems));
+localStorage.setItem("total", total);
+
+// ✅ COUNT UPDATE
+updateCartCount();
+
+// ✅ ALERT
+alert(item + " added to cart ✅");
+}
+
+// 🛒 COUNT
+function updateCartCount(){
+let items = JSON.parse(localStorage.getItem("cartItems")) || [];
+document.getElementById("count").innerText = items.length;
+}
+
+// NAV
+function goToCart(){
+window.location.href="cart.html";
+}
+
+function goToProfile(){
+window.location.href="profile.html";
+}
+
+// 🔐 PROTECT
+if(localStorage.getItem("loggedIn") !== "true"){
+window.location.href="login.html";
+}
+
+updateCartCount();
+
+</script>
+
+</body>
+</html>

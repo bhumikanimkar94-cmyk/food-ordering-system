@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Profile</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="navbar">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+
+<button class="logout-btn" onclick="logout()">Logout</button>
+</div>
+
+<h1>👤 Profile</h1>
+
+<div class="form-box">
+<h2 id="username"></h2>
+</div>
+
+<h2>📦 Your Orders</h2>
+
+<div id="orders" class="food-container"></div>
+
+<script>
+
+// 👤 GET USER
+let user = localStorage.getItem("username");
+
+// 🔥 DEBUG (VERY IMPORTANT)
+console.log("👤 Logged user:", user);
+
+// 🛑 IF USER NOT FOUND
+if(!user){
+alert("⚠️ Please login first");
+window.location.href = "login.html";
+}
+
+// show username
+document.getElementById("username").innerText = "User: " + user;
+
+
+// 🔥 FETCH USER ORDERS ONLY
+async function loadOrders(){
+
+try{
+
+// 🔥 IMPORTANT: encode username
+let res = await fetch("http://localhost:3000/orders?username=" + encodeURIComponent(user));
+
+let data = await res.json();
+
+console.log("📦 Orders received:", data);   // 🔥 DEBUG
+
+let container = document.getElementById("orders");
+
+// clear old
+container.innerHTML = "";
+
+// 🛑 NO ORDERS
+if(!data || data.length === 0){
+container.innerHTML = "<p>No orders yet 😢</p>";
+return;
+}
+
+// 🧾 SHOW ORDERS
+data.forEach(order => {
+
+let div = document.createElement("div");
+div.className = "food";
+
+// items list
+let itemsHTML = "";
+
+if(order.items && order.items.length > 0){
+order.items.forEach(i=>{
+itemsHTML += `<p>${i.name} - ₹${i.price}</p>`;
+});
+}
+
+div.innerHTML = `
+<h3>Order ₹${order.total}</h3>
+<p><b>Date:</b> ${new Date(order.date).toLocaleString()}</p>
+<p><b>Address:</b> ${order.address}</p>
+<p><b>Phone:</b> ${order.phone}</p>
+<p><b>Payment:</b> ${order.payment}</p>
+<hr>
+${itemsHTML}
+`;
+
+container.appendChild(div);
+
+});
+
+}catch(err){
+console.log("❌ FETCH ERROR:", err);
+}
+
+}
+
+loadOrders();
+
+// 🚪 LOGOUT
+function logout(){
+localStorage.removeItem("loggedIn");
+window.location.href="login.html";
+}
+
+</script>
+
+</body>
+</html>
