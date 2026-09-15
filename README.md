@@ -1,6 +1,6 @@
 # 🍽️ Food Ordering System
 
-## 📌 About the Project
+## 📌 About theProject 
 
 Food Ordering System is a web-based application that allows users to browse food items and place food orders online.
 
@@ -52,7 +52,7 @@ This project is developed using Node.js and Express.js for the backend, HTML, CS
 - GitHub
 - npm
 
-## 📂 Project Structure
+### 📂 Project Structure
 
 ```text
 food-ordering-system/
@@ -72,7 +72,7 @@ food-ordering-system/
 ├── package-lock.json
 ├── .gitignore
 └── README.md
-###📄 Main Files
+📄 Main Files
 server.js – Backend server and application logic.
 index.html – Main home page.
 login.html – User login page.
