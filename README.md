@@ -1,6 +1,6 @@
 # 🍽️ Food Ordering System
 
-## 📌 About theProject 
+## 📌 About the Project
 
 Food Ordering System is a web-based application that allows users to browse food items and place food orders online.
 
@@ -34,25 +34,29 @@ This project is developed using Node.js and Express.js for the backend, HTML, CS
 ## 🛠️ Technologies Used
 
 ### Frontend
+
 - HTML5
 - CSS3
 - JavaScript
 
 ### Backend
+
 - Node.js
 - Express.js
 
 ### Database
+
 - MongoDB
 - Mongoose
 
 ### Tools
+
 - Visual Studio Code
 - Git
 - GitHub
 - npm
 
-### 📂 Project Structure
+## 📂 Project Structure
 
 ```text
 food-ordering-system/
@@ -73,18 +77,23 @@ food-ordering-system/
 ├── .gitignore
 └── README.md
 ```
-📄 Main Files
-server.js – Backend server and application logic.
-index.html – Main home page.
-login.html – User login page.
-register.html – User registration page.
-profile.html – User profile page.
-cart.html – Shopping cart page.
-about.html – About the project page.
-style.css – Website styling.
-public/images/ – Contains food item images.
-package.json – Contains project dependencies and configuration.
-🔄 Working of the System
+
+## 📄 Main Files
+
+- **server.js** – Backend server and application logic.
+- **index.html** – Main home page.
+- **login.html** – User login page.
+- **register.html** – User registration page.
+- **profile.html** – User profile page.
+- **cart.html** – Shopping cart page.
+- **about.html** – About the project page.
+- **style.css** – Website styling.
+- **public/images/** – Contains food item images.
+- **package.json** – Contains project dependencies and configuration.
+
+## 🔄 Working of the System
+
+```text
 User
   ↓
 Register / Login
@@ -100,70 +109,93 @@ View Cart
 Place Order
   ↓
 Order Information
-🗄️ Database
+```
+
+## 🗄️ Database
 
 MongoDB is used as the database for the application.
 
 The backend uses Mongoose to communicate with the MongoDB database and manage application data.
 
-⚙️ How to Run the Project
-1. Clone the Repository
+## ⚙️ How to Run the Project
+
+### 1. Clone the Repository
+
+```bash
 git clone https://github.com/bhumikanimkar94-cmyk/food-ordering-system.git
-2. Open the Project
+```
+
+### 2. Open the Project
 
 Open the project folder in Visual Studio Code.
 
-3. Install Dependencies
+### 3. Install Dependencies
+
+```bash
 npm install
-4. Start the Server
+```
+
+### 4. Start the Server
+
+```bash
 node server.js
-5. Open in Browser
+```
 
-Open:
+### 5. Open in Browser
 
+Open the following address in your browser:
+
+```text
 http://localhost:3000
-🔐 Security
+```
 
-The .gitignore file is used to prevent unnecessary and sensitive files from being uploaded to GitHub.
+## 🔐 Security
 
+The `.gitignore` file is used to prevent unnecessary and sensitive files from being uploaded to GitHub.
+
+```text
 node_modules/
 .env
+```
 
 Database passwords and other private credentials should not be shared publicly.
 
-✅ Advantages
-Simple and user-friendly interface.
-Easy food selection.
-Convenient cart management.
-Digital order management.
-MongoDB database integration.
-Demonstrates full-stack development.
+## ✅ Advantages
 
-🚀 Future Scope
-Online payment integration.
-Order tracking.
-Admin dashboard.
-Food search and filtering.
-Food ratings and reviews.
-Order history.
-Delivery management.
-Improved authentication and security.
+- Simple and user-friendly interface.
+- Easy food selection.
+- Convenient cart management.
+- Digital order management.
+- MongoDB database integration.
+- Demonstrates full-stack development.
 
-📚 Learning Outcomes
+## 🚀 Future Scope
+
+- Online payment integration.
+- Order tracking.
+- Admin dashboard.
+- Food search and filtering.
+- Food ratings and reviews.
+- Order history.
+- Delivery management.
+- Improved authentication and security.
+
+## 📚 Learning Outcomes
 
 This project helped in understanding:
 
-Web development using HTML, CSS and JavaScript.
-Backend development using Node.js.
-Express.js.
-MongoDB database integration.
-User authentication.
-Cart and order management.
-Git and GitHub.
+- Web development using HTML, CSS and JavaScript.
+- Backend development using Node.js.
+- Express.js.
+- MongoDB database integration.
+- User authentication.
+- Cart and order management.
+- Git and GitHub.
 
-👩‍💻 Author
-Bhumika Nimkar
+## 👩‍💻 Author
 
-📜 Purpose
+**Bhumika Nimkar**
+
+## 📜 Purpose
 
 This project is developed for educational and academic purposes.
