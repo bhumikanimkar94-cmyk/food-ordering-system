@@ -72,7 +72,7 @@ food-ordering-system/
 ├── package-lock.json
 ├── .gitignore
 └── README.md
-📄 Main Files
+###📄 Main Files
 server.js – Backend server and application logic.
 index.html – Main home page.
 login.html – User login page.
@@ -83,7 +83,7 @@ about.html – About the project page.
 style.css – Website styling.
 public/images/ – Contains food item images.
 package.json – Contains project dependencies and configuration.
-🔄 Working of the System
+###🔄 Working of the System
 User
   ↓
 Register / Login
@@ -99,13 +99,13 @@ View Cart
 Place Order
   ↓
 Order Information
-🗄️ Database
+###🗄️ Database
 
 MongoDB is used as the database for the application.
 
 The backend uses Mongoose to communicate with the MongoDB database and manage application data.
 
-⚙️ How to Run the Project
+###⚙️ How to Run the Project
 1. Clone the Repository
 git clone https://github.com/bhumikanimkar94-cmyk/food-ordering-system.git
 2. Open the Project
@@ -130,7 +130,7 @@ node_modules/
 
 Database passwords and other private credentials should not be shared publicly.
 
-✅ Advantages
+###✅ Advantages
 Simple and user-friendly interface.
 Easy food selection.
 Convenient cart management.
@@ -138,7 +138,7 @@ Digital order management.
 MongoDB database integration.
 Demonstrates full-stack development.
 
-🚀 Future Scope
+###🚀 Future Scope
 Online payment integration.
 Order tracking.
 Admin dashboard.
@@ -148,7 +148,7 @@ Order history.
 Delivery management.
 Improved authentication and security.
 
-📚 Learning Outcomes
+###📚 Learning Outcomes
 
 This project helped in understanding:
 
@@ -160,8 +160,8 @@ User authentication.
 Cart and order management.
 Git and GitHub.
 
-👩‍💻 Author
+###👩‍💻 Author
 Bhumika Nimkar
 
-📜 Purpose
+###📜 Purpose
 This project is developed for educational and academic purposes.
